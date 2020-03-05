@@ -7,3 +7,4 @@ Seller/staic/
 Seller/templates/
 Seller/migrations/
 sdk/sendemaildemo.py
+sdk/alipaydemo.py
