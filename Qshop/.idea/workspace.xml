@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b7376d11-45a4-45e7-bc6c-445c898e4e9f" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Qshop$sendemaildemo.coverage" NAME="sendemaildemo Coverage Results" MODIFIED="1583221145913" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sdk" />
+    <SUITE FILE_PATH="coverage/Qshop$alipaydemo.coverage" NAME="alipaydemo Coverage Results" MODIFIED="1583041393744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sdk" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="241" />
+    <option name="y" value="27" />
+    <option name="width" value="1600" />
+    <option name="height" value="1043" />
+  </component>
+  <component name="ProjectId" id="1YfXRPAJiBUdRpStfDFkVNLChLe" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ArticleBlog" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\GITEEupload\Qshop\sdk" />
+      <recent name="E:\project0211\Qshop\Seller\templates\seller" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Django server.Qshop">
+    <configuration name="goods_list.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Qshop/Seller/templates/seller/goods_list.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="alipaydemo" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Qshop" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/sdk" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sdk/alipaydemo.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="sendemaildemo" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Qshop" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/sdk" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sdk/sendemaildemo.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Qshop" type="Python.DjangoServer" factoryName="Django server">
+      <module name="Qshop" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="Qshop.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.sendemaildemo" />
+        <item itemvalue="Python.alipaydemo" />
+        <item itemvalue="JavaScript Debug.goods_list.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b7376d11-45a4-45e7-bc6c-445c898e4e9f" name="Default Changelist" comment="" />
+      <created>1582604830453</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582604830453</updated>
+      <workItem from="1582604835209" duration="23770000" />
+      <workItem from="1582638007121" duration="414000" />
+      <workItem from="1582688746296" duration="33918000" />
+      <workItem from="1582775079825" duration="27289000" />
+      <workItem from="1582855380605" duration="2329000" />
+      <workItem from="1582867090346" duration="293000" />
+      <workItem from="1582867492443" duration="780000" />
+      <workItem from="1582871936244" duration="4445000" />
+      <workItem from="1582956759251" duration="22959000" />
+      <workItem from="1583037140013" duration="5629000" />
+      <workItem from="1583111813695" duration="27767000" />
+      <workItem from="1583215756230" duration="22778000" />
+      <workItem from="1583292301271" duration="4714000" />
+      <workItem from="1583319230345" duration="11732000" />
+      <workItem from="1583334620388" duration="9383000" />
+      <workItem from="1583398212010" duration="65000" />
+      <workItem from="1583398403745" duration="3862000" />
+    </task>
+    <task id="LOCAL-00001" summary="增加商品时合并同种商品，完成支付宝交易页面">
+      <created>1582985535205</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1582985535205</updated>
+    </task>
+    <task id="LOCAL-00002" summary="购物车增减，详情页单件商品下单优化">
+      <created>1583168408155</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1583168408155</updated>
+    </task>
+    <task id="LOCAL-00003" summary="购物车优化，增减商品优化，不超库存不能小于0，可删除，购物车跳转订单页">
+      <created>1583248317360</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1583248317360</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="增加商品时合并同种商品，完成支付宝交易页面" />
+    <MESSAGE value="购物车增减，详情页单件商品下单优化" />
+    <MESSAGE value="购物车优化，增减商品优化，不超库存不能小于0，可删除，购物车跳转订单页" />
+    <option name="LAST_COMMIT_MESSAGE" value="购物车优化，增减商品优化，不超库存不能小于0，可删除，购物车跳转订单页" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="477" y="141" key="FileChooserDialogImpl" timestamp="1583403264336">
+      <screen x="65" y="24" width="1295" height="744" />
+    </state>
+    <state x="477" y="141" key="FileChooserDialogImpl/65.24.1295.744@65.24.1295.744" timestamp="1583403264336" />
+    <state width="1243" height="97" key="GridCell.Tab.0.bottom" timestamp="1583390847836">
+      <screen x="65" y="24" width="1295" height="744" />
+    </state>
+    <state width="1243" height="97" key="GridCell.Tab.0.bottom/65.24.1295.744@65.24.1295.744" timestamp="1583390847836" />
+    <state width="1243" height="97" key="GridCell.Tab.0.center" timestamp="1583390847835">
+      <screen x="65" y="24" width="1295" height="744" />
+    </state>
+    <state width="1243" height="97" key="GridCell.Tab.0.center/65.24.1295.744@65.24.1295.744" timestamp="1583390847835" />
+    <state width="1243" height="97" key="GridCell.Tab.0.left" timestamp="1583390847835">
+      <screen x="65" y="24" width="1295" height="744" />
+    </state>
+    <state width="1243" height="97" key="GridCell.Tab.0.left/65.24.1295.744@65.24.1295.744" timestamp="1583390847835" />
+    <state width="1243" height="97" key="GridCell.Tab.0.right" timestamp="1583390847836">
+      <screen x="65" y="24" width="1295" height="744" />
+    </state>
+    <state width="1243" height="97" key="GridCell.Tab.0.right/65.24.1295.744@65.24.1295.744" timestamp="1583390847836" />
+  </component>
+</project>

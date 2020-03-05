@@ -1,0 +1,9 @@
+*.pyc
+static/
+Buyer/static/
+Buyer/templates/
+Buyer/migrations/
+Seller/staic/
+Seller/templates/
+Seller/migrations/
+sdk/sendemaildemo.py
