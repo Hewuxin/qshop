@@ -1,0 +1,5 @@
+*.pyc
+Buyer/migrations/
+Seller/migrations/
+sdk/sendemaildemo.py
+sdk/alipaydemo.py

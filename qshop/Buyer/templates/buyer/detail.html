@@ -1,0 +1,195 @@
+{% extends "buyer/base.html" %}
+{% block title %}
+天天生鲜-商品详情
+{% endblock %}
+{% block pagename %}
+
+{% endblock %}
+{% block content %}
+<div class="navbar_con">
+		<div class="navbar clearfix">
+			<div class="subnav_con fl">
+				<h1>全部商品分类</h1>
+				<span></span>
+				<ul class="subnav">
+					<li><a href="/buyer/list/?typeid=2&goodstype=新鲜水果" class="fruit">新鲜水果</a></li>
+                    <li><a href="/buyer/list/?typeid=3&goodstype=海鲜水产" class="seafood">海鲜水产</a></li>
+                    <li><a href="/buyer/list/?typeid=4&goodstype=猪牛羊肉" class="meet">猪牛羊肉</a></li>
+                    <li><a href="/buyer/list/?typeid=5&goodstype=禽类蛋品" class="egg">禽类蛋品</a></li>
+                    <li><a href="/buyer/list/?typeid=1&goodstype=新鲜蔬菜" class="vegetables">新鲜蔬菜</a></li>
+                    <li><a href="/buyer/list/?typeid=6&goodstype=速冻食品" class="ice">速冻食品</a></li>
+				</ul>
+			</div>
+			<ul class="navlist fl">
+				<li><a href="">首页</a></li>
+				<li class="interval">|</li>
+				<li><a href="">手机生鲜</a></li>
+				<li class="interval">|</li>
+				<li><a href="">luck try</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="breadcrumb">
+		<a href="#">全部分类</a>
+		<span>></span>
+		<a href="/buyer/list/">111</a>
+		<span>></span>
+		<a href="#">商品详情</a>
+	</div>
+
+	<div class="goods_detail_con clearfix">
+		<div class="goods_detail_pic fl"><img src="/static/{{ goods.goods_picture }}" style="height: 100%;width: 100%"></div>
+
+		<div class="goods_detail_list fr">
+			<h3>{{ goods.goods_name }}</h3>
+			<p>{{ goods.goods_tip }}</p>
+			<div class="prize_bar">
+				<span class="show_pirze" >¥<em id="price">{{ goods.goods_price }}</em></span>
+				<span class="show_unit">单  位：500g</span>
+			</div>
+			<div class="goods_num clearfix">
+				<div class="num_name fl" >数 量：</div>
+				<div class="num_add fl">
+					<input type="text" id="num" class="num_show fl" value="1">
+					<a id="add" href="javascript:;" class="add fr" >+</a>
+					<a id="reduce" href="javascript:;" class="minus fr" >-</a>
+				</div>
+			</div>
+			<div class="total" >总价：<em ><span id="totalprice">{{ goods.goods_price }}</span>元</em></div>
+			<div class="operate_btn">
+				<a id="buy_now" href="javascript:;" class="buy_btn" >立即购买</a>
+				<a  href="javascript:;" class="add_cart" onclick="add_cart(this)">加入购物车</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="main_wrap clearfix">
+		<div class="l_wrap fl clearfix">
+			<div class="new_goods">
+				<h3>新品推荐</h3>
+				<ul>
+					<li>
+						<a href="#"><img src="/static/buyer/images/goods/goods001.jpg"></a>
+						<h4><a href="#">进口柠檬</a></h4>
+						<div class="prize">￥3.90</div>
+					</li>
+					<li>
+						<a href="#"><img src="/static/buyer/images/goods/goods002.jpg"></a>
+						<h4><a href="#">玫瑰香葡萄</a></h4>
+						<div class="prize">￥16.80</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="r_wrap fr clearfix">
+			<ul class="detail_tab clearfix">
+				<li class="active">商品介绍</li>
+				<li>评论</li>
+			</ul>
+
+			<div class="tab_content">
+				<dl>
+					<dt>商品详情：</dt>
+					<dd>{{ goods.goods_description }}</dd>
+				</dl>
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+
+{% endblock %}
+{% block script %}
+    <script type="text/javascript" src="/static/buyer/js/jquery-1.12.4.min.js"></script>
+    <script>
+        $("#add").click(
+            function () {
+                {#console.log(1111);#}
+                var num = parseInt($("#num").val());
+                var price = parseFloat($("#price").text());
+                num = num + 1;
+                totalprice =(num * price).toFixed(2);
+                $("#num").val(num);
+                $("#totalprice").text(totalprice);
+
+            }
+        );
+
+        $("#reduce").click(
+            function () {
+                {#console.log(1111);#}
+                var num = parseInt($("#num").val());
+                var price = parseFloat($("#price").text());
+                if (num > 0){
+                    num = num - 1;
+                    totalprice =(num * price).toFixed(2);
+                    $("#num").val(num);
+                    $("#totalprice").text(totalprice);
+                }
+                else{
+                    num = 0;
+                    totalprice =(num * price).toFixed(2);
+                    $("#num").val(num);
+                    $("#totalprice").text(totalprice);
+                }
+
+            }
+        );
+
+        $("#buy_now").click(
+            function () {
+                {#console.log(111);#}
+                var goods_id = {{ goods.id }};
+                var buy_number = parseInt($("#num").val());
+                var url = '/buyer/add_order/?goods_id='+goods_id+"&buy_number="+buy_number+"&single=1";
+                $.ajax({
+                    url:url,
+                    type:"get",
+                    data:"",
+                    success:function (data) {
+                        console.log(data["orderid"]);
+                        var orderid = data["orderid"];
+                        window.location.href = "/buyer/placeorder/?orderid="+orderid;
+                    },
+                    error:function (error) {
+                    }
+                });
+
+            }
+        );
+
+
+        function add_cart(obj) {
+            var url = "/buyer/add_cart/";
+            var goods_id = {{ goods.id }};
+            var goods_num = parseInt($("#num").val());
+            console.log(goods_num);
+            var send_data = {
+                "csrfmiddlewaretoken":"{{ csrf_token }}",
+                "goods_id":goods_id,
+                "goods_num":goods_num
+            };
+            $.ajax({
+                url:url,
+                type:"post",
+                data:send_data,
+                success:function (data) {
+                    alert(data["msg"]);
+                },
+                error:function (error) {
+                    console.log(error)
+                }
+            })
+        }
+
+
+    </script>
+
+
+
+{% endblock %}

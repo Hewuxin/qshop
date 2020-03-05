@@ -1,0 +1,160 @@
+{% extends "buyer/base.html" %}
+{% block title %}
+生鲜超市--购物车
+{% endblock %}
+{% block pagename %}
+    |&nbsp;&nbsp;&nbsp;&nbsp;购物车
+{% endblock %}
+{% block content %}
+
+    <div class="total_count">全部商品<em>{{ num }}</em>件</div>
+	<ul class="cart_list_th clearfix">
+		<li class="col01">商品名称</li>
+		<li class="col02">商品单位</li>
+		<li class="col03">商品价格</li>
+		<li class="col04">数量</li>
+		<li class="col05">小计</li>
+		<li class="col06">操作</li>
+	</ul>
+
+
+    <form action="/buyer/cart_palce_order/" method="post">
+    {% csrf_token %}
+    {% for one in cart  %}
+	    <ul class="cart_list_td clearfix">
+		<li class="col01"><input type="checkbox" name="cart_id_{{ one.id }}" value="{{ one.id }}" checked class="goods_box" ></li>
+		<li class="col02"><img src="/static/{{ one.goods.goods_picture }}"></li>
+		<li class="col03">{{ one.goods.goods_name }}<br><em>{{ one.goods.goods_price }}元/500g</em></li>
+		<li class="col04">500g</li>
+		<li class="col05">{{ one.goods.goods_price }}元</li>
+		<li class="col06">
+			<div class="num_add">
+				<a href="javascript:;" class="add fl" onclick="jisuan({{ one.id }},'add')">+</a>
+				<input type="text" class="num_show fl" id="goods_num_{{ one.id }}" value="{{ one.goods_number }}">
+				<a href="javascript:;" class="minus fl" onclick="jisuan({{ one.id }},'reduce')">-</a>
+			</div>
+		</li>
+		<li class="col07" ><em id="goods_total_{{ one.id }}">{{ one.goods_total }}</em><span>元</span></li>
+		<li class="col08"><a href="javascript:;"onclick="del({{ one.id }})">删除</a></li>
+	</ul>
+    {% endfor %}
+
+
+	<ul class="settlements">
+		<li class="col01"><input type="checkbox" name="" checked="" id="check_box"></li>
+		<li class="col02">全选</li>
+		<li class="col03">合计(不含运费)：<span>¥</span><em id="total_money">{{ all_total.sum_total }}</em><br>共计<b id="total_number">{{ all_total.sum_number}}</b>件商品</li>
+		<li class="col04">
+            <input type="submit" style="width: 165px;height: 80px;background-color:orange;color: white;font-size: 24px;"  value="去结算">
+        </li>
+	</ul>
+
+    </form>
+{% endblock %}
+
+{% block script %}
+
+<script type="text/javascript" src="/static/buyer/js/jquery-1.12.4.min.js"></script>
+    <script>
+        $("#check_box").click(
+            function () {
+                // console.log(11111);
+                if (this.checked){
+                    $(".goods_box").prop("checked",true);
+                    //console.log(this.checked);
+                }else{
+                    $(".goods_box").prop("checked",false);
+                }
+                add();
+            }
+        );
+        $(".goods_box").click(
+            function () {
+                var len1 = $(".goods_box").length;
+                var len2 = $(".goods_box:checked").length;
+                if (len1 == len2){
+                    $("#check_box").prop("checked",true);
+                }else{
+                    $("#check_box").prop("checked",false);
+                }
+                add();
+            }
+        );
+
+        function add() {
+            var mydict = {"num":0,"total_money":0};
+            console.log(mydict);
+            $(".goods_box").each(
+                function () {
+                    if(this.checked){
+                        var number = parseInt($(this).parents(".cart_list_td").find(".num_show").val());
+                        var money = parseFloat($(this).parents(".cart_list_td").find(".col07").text());
+                        mydict.num += number;
+                        mydict.total_money += money;
+                        console.log(mydict);
+                    }
+                }
+            );
+            // console.log(mydict);
+            $("#total_money").text(mydict.total_money);
+            $("#total_number").text(mydict.num)
+        }
+
+        function jisuan(cart_id,js_type){
+            var url = "/buyer/change_cart/";
+            var cart_id = cart_id;
+            var js_type = js_type;
+            send_data={
+                "csrfmiddlewaretoken":"{{ csrf_token }}",
+                "cart_id":cart_id,
+                "js_type":js_type,
+            };
+            $.ajax({
+                url:url,
+                type:"post",
+                data:send_data,
+                success:function (data) {
+                    console.log(data);
+                    if (data.code == 10000){
+                        document.getElementById("goods_num_"+cart_id).value=data.data["goods_number"];
+                        document.getElementById("goods_total_"+cart_id).innerHTML=data.data["goods_total"];
+                        add();
+                    }else{
+                        alert(data.msg)
+                    }
+                },
+                error:function (data) {
+                    console.log(data)
+                }
+            })
+        }
+
+        function del(cart_id) {
+            console.log(1111);
+            var url = "/buyer/delete_cart/";
+            var cart_id = cart_id;
+            send_data={
+                "csrfmiddlewaretoken":"{{ csrf_token }}",
+                "cart_id":cart_id,
+            };
+            $.ajax({
+                url:url,
+                type:"post",
+                data:send_data,
+                success:function (data) {
+                    console.log(data);
+                    alert(data.msg);
+                    window.location.href = "/buyer/cart/";
+                },
+                error:function (error) {
+                    console.error();
+                }
+            })
+        }
+
+
+
+
+    </script>
+
+{% endblock %}

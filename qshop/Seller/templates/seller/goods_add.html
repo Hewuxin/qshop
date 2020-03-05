@@ -1,0 +1,51 @@
+{% extends "seller/blank.html" %}
+{% block title %}
+    后台管理--添加商品
+{% endblock %}
+{% block content %}
+    <div class="col-lg-auto">
+        <div class="card mb-4 py-3 border-left-info" style="margin: 20px;padding: 20px">
+            <div style="padding-bottom: 20px">
+                <span class="m-0 font-weight-bold text-info" style="font-size:24px">录入商品</span>
+            </div>
+
+            <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+                <div class="form-group">
+                <input type="text" name="goods_no" placeholder="商品编号" class="form-control form-control-user">
+            </div>
+                <div class="form-group">
+                <input type="text" name="goods_name" placeholder="商品名字" class="form-control form-control-user">
+            </div>
+                <div class="form-group">
+                <input type="text" name="goods_price" placeholder="商品价格" class="form-control form-control-user">
+            </div>
+                <div class="form-group">
+                <input type="text" name="goods_number" placeholder="商品数量" class="form-control form-control-user">
+            </div>
+                <div class="form-group">
+                <input type="text" name="goods_location" placeholder="商品产地" class="form-control form-control-user">
+            </div>
+                <div class="form-group">
+                <input type="text" name="goods_safe_time" placeholder="商品保质期" class="form-control form-control-user">
+            </div>
+                <div class="form-group">
+                    <select name="goods_type" id="" class="form-control form-control-user">
+                        {% for one in goods_type %}
+                            <option value="{{ one.id }}">{{ one.type_label }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            <div class="form-group">
+                <input type="file" name="goodsimg" placeholder="上传商品图片" class="form-control form-control-user">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="提交" class="btn btn-info btn-user btn-block ">
+            </div>
+        </form>
+
+        </div>
+
+
+    </div>
+{% endblock %}

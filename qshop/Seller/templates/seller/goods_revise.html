@@ -1,0 +1,93 @@
+{% extends "seller/blank.html" %}
+{% block title %}
+    后台管理--商品修改
+{% endblock %}
+{% block content %}
+    <div class="col-lg-auto">
+        <div class="card mb-4 py-3 border-left-primary" style="margin: 20px;padding: 20px">
+            <h4 class="m-0 font-weight-bold text-primary" style="padding-bottom: 15px">商品修改</h4>
+
+          <form action="" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+            <table class="table">
+                <tr>
+                    <td rowspan="3" colspan="2" style="width: 300px;">
+                        <img src="/static/{{ goods.goods_picture }}" style="height: 300px;width: 300px;" alt="">
+                        <input type="file" name="goodsimg">
+                    </td>
+                    <th>商品编号</th>
+                    <td>
+                        <input type="text" name="goods_no" value="{{ goods.goods_no }}" class="form-control">
+                    </td>
+                    <th>商品名称</th>
+                    <td>
+                        <input type="text" name="goods_name" value="{{ goods.goods_name }}">
+                    </td>
+                </tr>
+                <tr>
+                    <th>商品单价</th>
+                    <td>
+                        <input type="text" name="goods_price" value="{{ goods.goods_price }}">
+                    </td>
+                    <th>商品数量</th>
+                    <td>
+                        <input type="text" name="goods_number" value="{{ goods.goods_number }}">
+                    </td>
+                </tr>
+                <tr>
+                    <th>是否推荐</th>
+                    <td>
+                        <select name="goods_top" id="">
+                            <option value="0">推荐</option>
+                            <option value="1">不推荐</option>
+                            <option value="{{ goods.goods_top }}" selected hidden>{{ goods.get_goods_top_display }}</option>
+                        </select>
+                    </td>
+                    <th>点击量</th>
+                    <td>
+                        <input type="text" name="goods_click" value="{{ goods.goods_click }}">
+                    </td>
+                </tr>
+                <tr>
+                    <th>商品产地</th>
+                    <td>
+                        <input type="text" name="goods_location" value="{{ goods.goods_location }}">
+                    </td>
+                    <th>保质期</th>
+                    <td>
+                        <input type="text" name="goods_safe_time" value="{{ goods.goods_safe_time }}">
+                    </td>
+                    <th>商品类型</th>
+                    <td>
+                        <select name="goods_type" id="">
+                            {% for one in type %}
+                                <option value="{{ one.id }}">{{ one.type_label }}</option>
+                            {% endfor %}
+                            <option value="{{ goods.goods_type.id }}" selected hidden>{{ goods.goods_type.type_label }}</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>商品简介</th>
+                    <td>
+                        <input type="text" name="goods_tip" value="{{ goods.goods_tip }}">
+                    </td>
+                    <th >商品介绍</th>
+                        <td colspan="3">
+                        <input type="text" name="goods_description" value="{{ goods.goods_description }}">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <input type="button" value="返回" class="btn btn-primary btn-user btn-block">
+                    </td>
+                    <td colspan="3">
+                        <input type="submit" value="确认修改" class="btn btn-warning btn-user btn-block">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        </div>
+    </div>
+{% endblock %}

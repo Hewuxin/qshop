@@ -1,0 +1,59 @@
+{% extends "seller/blank.html" %}
+{% block title %}
+    后台管理--个人中心
+{% endblock %}
+{% block content %}
+    <div class="col-lg-auto">
+        <div class="card mb-4 py-3 border-left-primary" style="margin: 20px;padding: 20px">
+            <h4 class="m-0 font-weight-bold text-primary" style="padding-bottom: 15px">个人中心</h4>
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+            <table class="table">
+                <tr>
+                    <td rowspan="3" style="width: 300px;">
+                        <img src="/static/{{ user.photo }}" style="height: 300px;width: 300px;" alt="">
+                        <input type="file" name="img">
+                    </td>
+                    <th>邮箱</th>
+                    <td>
+                        <input type="text" name="email" value="{{ user.email }}">
+                    </td>
+                    <th>用户名</th>
+                    <td>
+                        <input type="text" name="username" value="{{ user.username }}">
+                    </td>
+                </tr>
+                <tr>
+                    <th>手机号</th>
+                    <td>
+                        <input type="text" name="mobile_phone" value="{{ user.mobile_phone }}">
+                    </td>
+                    <th>年龄</th>
+                    <td>
+                        <input type="text" name="age" value="{{ user.age }}">
+                    </td>
+                </tr>
+                <tr>
+                    <th>性别</th>
+                    <td>
+                        <select name="gender" id="">
+                            <option value="0">女</option>
+                            <option value="1">男</option>
+                            <option value="{{ user.gender }}" selected hidden>{{ user.get_gender_display }}</option>
+                        </select>
+                    </td>
+                    <th>地址</th>
+                    <td>
+                        <input type="text" name="address" value="{{ user.address }}">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <input type="submit" value="完善个人信息" class="btn btn-primary btn-user btn-block">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        </div>
+    </div>
+{% endblock %}

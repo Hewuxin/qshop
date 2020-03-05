@@ -1,0 +1,96 @@
+{% extends "seller/blank.html" %}
+{% block title %}
+    后台管理--商品列表
+{% endblock %}
+{% block content %}
+    <div class="col-lg-auto">
+        <div class="card mb-4 py-3 border-left-primary" style="margin: 20px;padding: 20px">
+            <div style="padding-bottom: 20px">
+            {% if status == "1" %}
+                <span class="m-0 font-weight-bold text-primary" style="font-size:24px">在售商品</span>
+            {% else %}
+                <span class="m-0 font-weight-bold text-primary" style="font-size:24px">下架商品</span>
+            {% endif %}
+                <span style="float:right">
+                    <a href="/seller/goodsadd/"  class="btn btn-primary"  >录入商品</a>
+                </span>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>商品编号</th>
+                        <th>商品名称</th>
+                        <th>商品价格</th>
+                        <th>商品数量</th>
+                        <th>商品产地</th>
+                        <th>商品保质期</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                {% for one in page_obj %}
+                    <tr>
+                        <td>{{ one.goods_no }}</td>
+                        <td>{{ one.goods_name }}</td>
+                        <td>{{ one.goods_price }}</td>
+                        <td>{{ one.goods_number }}</td>
+                        <td>{{ one.goods_location }}</td>
+                        <td>{{ one.goods_safe_time }}</td>
+                        <td>
+                            <a href="/seller/goodsrevise/{{ one.id }}" class="btn btn-primary">修改</a>
+{#                            <button class="btn btn-warning">下架</button>#}
+                            {% if one.goods_status == 1 %}
+                                <a href="/seller/goodsstatus/{{ one.id }}/down/" class="btn btn-warning">下架</a>
+                            {% else %}
+                                <a href="/seller/goodsstatus/{{ one.id }}/up/" class="btn btn-google">上架</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        <div class="row">
+            <div class="col-sm-12 col-md-7">
+                <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite"></div>
+            </div>
+            <div class="col-sm-12 col-md-5">
+                <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+                    <ul class="pagination">
+
+                        {% if page_obj.has_previous %}
+                            <li class="paginate_button page-item">
+                                <a  href="/seller/goodslist/1/{{ status }}/" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">首页</a>
+                            </li>
+                            <li class="paginate_button page-item" >
+                                <a href="/seller/goodslist/{{ page_obj.previous_page_number }}/{{ status }}/" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">上一页</a>
+                            </li>
+                        {% endif %}
+                        {% for page in page_range %}
+                            {% if page == page_obj.number %}
+                                <li class="paginate_button page-item active">
+                                    <a href="/seller/goodslist/{{ page }}/{{ status }}/" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">{{ page }}</a>
+                                </li>
+                            {% else %}
+                                <li class="paginate_button page-item ">
+                                    <a href="/seller/goodslist/{{ page }}/{{ status }}/" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">{{ page }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <li class="paginate_button page-item next" id="dataTable_next">
+                                <a href="/seller/goodslist/{{ page_obj.next_page_number }}/{{ status }}/" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">下一页</a>
+                            </li>
+                            <li class="paginate_button page-item next" id="dataTable_next">
+                                <a href="/seller/goodslist/{{ paginator_obj.num_pages }}/{{ status }}/" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">尾页</a>
+                            </li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+{% endblock %}
+
