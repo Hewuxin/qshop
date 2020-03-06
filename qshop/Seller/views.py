@@ -9,17 +9,18 @@ import random
 # Create your views here.
 
 
-def setPassword(password):   # mi ma jia mi
+def setPassword(password):
     md5 = hashlib.md5()
     md5.update(password.encode())
     result = md5.hexdigest()
     return result
 
 
-def loginValid(func):   # zhuang tai pan duan zhuang shi qi
+def loginValid(func):
     def inner(request, *args, **kwargs):
         cookie_username = request.COOKIES.get("susername")
         session_username = request.session.get("susername")
+
         if cookie_username and session_username and cookie_username == session_username:
             return func(request, *args, **kwargs)
         else:
@@ -34,12 +35,11 @@ def blank(request):
 @loginValid
 def index(request):
     username = request.COOKIES.get("susername")
-    print(username)
     return render(request, "seller/index.html", locals())
 
 
 def register(request):
-    # print(request.POST)
+
     message = "welcome"
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -49,8 +49,7 @@ def register(request):
         repassword = request.POST.get('repassword')
         flag = LoginUser.objects.filter(email=email).exists()
         rcode = ValidCode.objects.filter(email=email).last().code
-        print(type(rcode))
-        print(type(code))
+
         if flag:
             message = "邮箱已存在"
         else:
@@ -68,7 +67,7 @@ def register(request):
 
 
 def login(request):
-    # print(request.POST)
+
     message = "welcome"
     if request.method == 'POST':
         username = request.POST.get("username")
@@ -94,8 +93,10 @@ def login(request):
 
 def logout(request):
     response = HttpResponseRedirect('/seller/login/')
+
     response.delete_cookie("susername")
     response.delete_cookie("suserid")
+
     del request.session["susername"]
     return response
 
@@ -122,13 +123,14 @@ def goods_list(request, status, page=1):
         end = page_all
     page_range = paginator_obj.page_range[start:end]
 
-    # return render(request,"goods_list.html",locals())
     return render(request, "seller/goods_list.html", locals())
 
 
 @loginValid
 def goods_status(request, id, status):
+
     goods = Goods.objects.get(id=id)
+
     if status == "up":
         goods.goods_status = 1
         goods.save()
@@ -136,14 +138,16 @@ def goods_status(request, id, status):
         goods.goods_status = 0
         goods.save()
     url = request.META.get("HTTP_REFERER")
-    print(url)
+
     return HttpResponseRedirect(url)
 
 
 @loginValid
 def user_profile(request):
+
     userid = request.COOKIES.get('suserid')
     user = LoginUser.objects.get(id=userid)
+
     if request.method == 'POST':
         data = request.POST
         user.email = data.get("email")
@@ -161,10 +165,10 @@ def user_profile(request):
 @loginValid
 def goods_add(request):
     goods_type = GoodsType.objects.all()
+
     if request.method == "POST":
         user_id = request.COOKIES.get("suserid")
-        print(request.COOKIES)
-        print(user_id)
+
         data = request.POST
         goods = Goods()
         goods.goods_no = data.get("goods_no")
@@ -228,7 +232,6 @@ def goods_revise(request, id):
         goods.goods_picture = request.FILES.get("goodsimg")
         goods.goods_type_id = int(data.get("goods_type"))
         goods.save()
-        print(request.FILES.get("goodsimg"))
 
     return render(request, "seller/goods_revise.html", locals())
 

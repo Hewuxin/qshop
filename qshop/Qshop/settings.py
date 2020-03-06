@@ -77,10 +77,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'qshop',
-        'USER':'root',
-        'PASSWORD':'123456',
-        'HOST':'localhost',
-        'PORT':'3306'
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
+        'PORT': '3306'
     }
 }
 
@@ -124,10 +124,9 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR,'static'),
+    os.path.join(BASE_DIR, 'static'),
 )
 # STATIC_ROOT = os.path.join(BASE_DIR,"static")
 
 MEDIA_url = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'static')
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static')

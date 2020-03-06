@@ -43,7 +43,6 @@ def get_order_no():
 @loginValid
 def index(request):
     userid = request.COOKIES.get("userid")
-    print(userid)
     # 实现首页商品展示只出现前4个
     goods_type = GoodsType.objects.all()
     res = []
@@ -124,7 +123,6 @@ def detail(request):
     if request.method == "GET":
         goodsid = request.GET.get("goodsid")
         goods = Goods.objects.get(id=goodsid)
-        print(goods)
     return render(request, "buyer/detail.html", locals())
 
 
@@ -135,14 +133,13 @@ def list(request):
         typeid = request.GET.get("typeid")
         if typeid:
             goods_list = Goods.objects.filter(goods_type=typeid)
-            print(goods_list)
+
         elif search_key:
             goods_list = Goods.objects.filter(
                 goods_name__contains=search_key).all()
-            print(goods_list)
+
         else:
             goods_list = Goods.objects.all()
-            print(goods_list)
     return render(request, "buyer/list.html", locals())
 
 
@@ -151,10 +148,11 @@ def place_order(request):
     # 获取前端传来的数据
     user_id = request.COOKIES.get("userid")
     orderid = request.GET.get("orderid")
+
     orderid = int(orderid)
-    print(orderid)
+
     payorder = PayOrder.objects.get(id=orderid)
-    print(payorder)
+
     ordergoods = payorder.ordergoods_set.all()
 
     return render(request, "buyer/place_order.html", locals())
@@ -193,7 +191,6 @@ def add_order(request):
 
     # 生成新订单的id
     orderid = payorder.id
-    print(orderid)
     result = {"orderid": orderid}
 
     return JsonResponse(result)
@@ -207,7 +204,7 @@ def cart_palce_order(request):
         # print(value)
         if key.startswith("cart_id"):
             res.append(value)
-    print(res)
+
     # 将购物中选中的商品 生成订单
     user_id = request.COOKIES.get("userid")
     # 查找商品
@@ -240,7 +237,6 @@ def cart_palce_order(request):
     payorder.save()
 
     order_id = str(payorder.id)
-    print(order_id)
 
     return render(request, "buyer/place_order.html", locals())
     # return HttpResponseRedirect(url)
@@ -264,7 +260,7 @@ def add_cart(request):
     data = request.POST
     # 从cookie中获取买家
     user_id = request.COOKIES.get("userid")
-    print(data)
+
     goods_id = data.get("goods_id")
     goods_num = int(data.get("goods_num"))
     goods = Goods.objects.get(id=goods_id)
@@ -333,7 +329,7 @@ def change_cart(request):
 def delete_cart(request):
     result = {"code": 10000, "msg": "删除成功"}
     cart_id = request.POST.get("cart_id")
-    print(cart_id)
+
     Cart.objects.filter(id=int(cart_id)).delete()
     return JsonResponse(result)
 
